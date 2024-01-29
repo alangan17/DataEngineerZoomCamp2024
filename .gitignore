@@ -171,6 +171,9 @@ keys/
 # .json
 *.json
 
+# data folder
+**/data/*
+
 # Terraform
 # Local .terraform directories
 **/.terraform/*
