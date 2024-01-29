@@ -3,16 +3,6 @@ Ref:
 
 This is the note taking from the course videos
 
-[DE Zoomcamp 1.2.1 - Introduction to Docker](https://www.youtube.com/watch?v=EYNwNlOrpr0)
-
-[DE Zoomcamp 1.2.2 - Ingesting NY Taxi Data to Postgres](https://www.youtube.com/watch?v=2JM-ziJt0WI)
-
-[DE Zoomcamp 1.2.3 - Connecting pgAdmin and Postgres](https://www.youtube.com/watch?v=hCAIVe9N0ow)
-
-[DE Zoomcamp 1.2.4 - Dockerizing the Ingestion Script](https://www.youtube.com/watch?v=B1WwATwf-vY)
-
-[1. Introduction to Docker](https://www.youtube.com/watch?v=EYNwNlOrpr0)
-
 # 0. Outcome of this Module
 ## Data Architecture
 [TODO]: Add diagram here
@@ -115,7 +105,7 @@ docker run -it \
       --data_source "https://d37ci6vzurychx.cloudfront.net/trip-data/green_tripdata_2019-01.parquet"
 ```
 
-# 3. Terraform
+# 4. Terraform
 ## Install Terraform
 1. Copy the following commands from [here](https://developer.hashicorp.com/terraform/install?product_intent=terraform#Linux)
 2. Paste the commands in the terminal of your Codespace and run them.
