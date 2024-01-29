@@ -5,7 +5,7 @@ This is the note taking from the course videos
 
 # 0. Outcome of this Module
 ## Data Architecture
-[TODO]: Add diagram here
+![Alt text](<assets/Week1_Data_Architecture.png>)
 
 ## Why should we care about Docker?
 1. Reproducibility (handling 'it works on my machine' issues)
