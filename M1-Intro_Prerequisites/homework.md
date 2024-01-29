@@ -209,7 +209,12 @@ terraform apply
 ```
 
 Paste the output of this command into the homework submission form.
-
+```
+google_bigquery_dataset.demo-dataset: Creating...
+google_storage_bucket.demo-bucket: Creating...
+google_bigquery_dataset.demo-dataset: Creation complete after 1s [id=projects/dez2024/datasets/demo_dataset]
+google_storage_bucket.demo-bucket: Creation complete after 2s [id=dez2024-demo-bucket]
+```
 
 ## Submitting the solutions
 
