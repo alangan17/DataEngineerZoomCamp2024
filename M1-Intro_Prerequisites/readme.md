@@ -27,21 +27,21 @@ Ref: https://www.youtube.com/watch?v=XOSUt8Ih3zA&list=PL3MmuxUbc_hKihpnNQ9qtTmWY
 1. Create a new repo in GitHub
 2. Create a new Codespace from the repo [Codespaces Free Tier](https://docs.github.com/en/billing/managing-billing-for-github-codespaces/about-billing-for-github-codespaces)
 3. Connect to the Codespace from Desktop VS Code
-![Alt text](<Assets/connect_vscode_codespace.png>)
+![Alt text](<assets/connect_vscode_codespace.png>)
 
 ## Setup postgres DB and pgAdmin
 1. Postgres Databse - Pull image and run the container (docker compose service = postgres)
 
 2. pgAdmin - Pull image and run the container (docker compose service = pgadmin)
-![Alt text](<Assets/pg_8080.png>)
+![Alt text](<assets/pg_8080.png>)
 
 3. Create a new server
 
 Note: In the field `Host name/ address`, type the name in `network` of the docker-compose.yml file
 
-![Alt text](<Assets/pg_create_new_server1.png>)
-![Alt text](<Assets/pg_create_new_server2.png>)
-![Alt text](<Assets/pg_create_new_server3.png>)
+![Alt text](<assets/pg_create_new_server1.png>)
+![Alt text](<assets/pg_create_new_server2.png>)
+![Alt text](<assets/pg_create_new_server3.png>)
 
 4. Press `ctrl + c` in the terminal to stop the container(s)
 
@@ -164,11 +164,11 @@ sudo apt update && sudo apt install terraform
 2. Copy the example
 3. Paste it in the `main.tf` file
 4. Review with `terraform plan`
-![Alt text](<Assets/tf_plan1.png>)
+![Alt text](<assets/tf_plan1.png>)
 5. Build the resources with `terraform apply` -> Type `yes`
-![Alt text](<Assets/tf_apply1.png>)
+![Alt text](<assets/tf_apply1.png>)
 6. Note there is a file called `terraform.tfstate` created in the local machine
 
 ### Destroy the resources
 1. Destroy the resources with `terraform destroy` -> Type `yes`
-![Alt text](<Assets/tf_destroy1.png>)
+![Alt text](<assets/tf_destroy1.png>)
