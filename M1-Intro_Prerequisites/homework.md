@@ -23,7 +23,7 @@ Which tag has the following text? - *Automatically remove the container when it 
 - `--delete`
 - `--rc`
 - `--rmc`
-- <span style="color:green">--rm</span>
+- ✅`--rm`
 
 
 ## Question 2. Understanding docker first run 
@@ -46,7 +46,7 @@ Now check the python modules that are installed ( use ```pip list``` ).
 
 What is version of the package *wheel* ?
 
-- <span style="color:green">0.42.0</span>
+- ✅0.42.0
 - 1.0.0
 - 23.0.1
 - 58.1.0
@@ -109,7 +109,7 @@ AND date(lpep_pickup_datetime ) = '2019-09-18'
 ```
 
 - 15767
-- <span style="color:green">15612</span>
+- ✅15612
 - 15859
 - 89009
 
@@ -130,7 +130,7 @@ order by sum(trip_distance) desc
 
 - 2019-09-18
 - 2019-09-16
-- <span style="color:green">2019-09-26</span>
+- ✅2019-09-26
 - 2019-09-21
 
 
@@ -153,7 +153,7 @@ HAVING sum(A.total_amount) > 50000
 ORDER BY sum(A.total_amount) DESC
 ```
 
-- <span style="color:green">"Brooklyn" "Manhattan" "Queens"</span>
+- ✅"Brooklyn" "Manhattan" "Queens"
 - "Bronx" "Brooklyn" "Manhattan"
 - "Bronx" "Manhattan" "Queens" 
 - "Brooklyn" "Queens" "Staten Island"
@@ -184,7 +184,7 @@ ORDER BY MAX(A.tip_amount) DESC
 
 - Central Park
 - Jamaica
-- <span style="color:green">JFK Airport</span>
+- ✅JFK Airport
 - Long Island City/Queens Plaza
 
 
