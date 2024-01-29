@@ -105,7 +105,7 @@ docker run -it \
       --data_source "https://d37ci6vzurychx.cloudfront.net/trip-data/green_tripdata_2019-01.parquet"
 ```
 
-# 4. Terraform
+# 4. Terraform & Google Cloud Platform (GCP)
 ## Why Terraform?
 1. Simplicity in keeping track of infrastructure
 2. Easier collaboration (e.g. git)
@@ -120,6 +120,31 @@ docker run -it \
 ## What is Terraform?
 1. Infrastructure as Code (IaC) - Create resources with code files
 
+## Key Terraform Commands
+1. `init` - Get me the providers I need
+2. `plan` - What ami I about to do? Preview the resources to be created
+3. `apply` - Do it! Create the resources
+4. `destroy` - Destroy the resources
+
+## GCP
+### Create a Project
+### Create a Service Account
+1. Go to Project Dashboard
+2. Click `IAM & Admin` -> `Service Accounts`
+3. Click `Create Service Account` (For automation usage)
+4. Service account details -> Name: `terraform-runner`
+5. Grant this service account access to project:
+   1. Cloud Storage -> `Storage Admin` (Use `Creator` in the real world)
+   2. BigQuery -> `BigQuery Admin` (Use `Creator` in the real world)
+   3. Compute Engine -> `Compute Admin` (Use `Creator` in the real world)
+6. In case you to change the existing service account, click on `IAM`, choose the service account and click `Edit`, add or change the role(s)
+
+### Get the Service Account key
+1. Go to Project Dashboard
+2. Click `IAM & Admin` -> `Service Accounts`
+3. Click on the service account you want to use
+4. Click `Manage Keys` -> `Add Key` -> `Create new key` -> `JSON` -> `Create`
+5. Carefully save the JSON file in a safe place, never commit it to git!
 
 ## Install Terraform
 1. Copy the following commands from [here](https://developer.hashicorp.com/terraform/install?product_intent=terraform#Linux)
