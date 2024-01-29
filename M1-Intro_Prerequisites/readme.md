@@ -25,7 +25,7 @@ Ref: https://www.youtube.com/watch?v=XOSUt8Ih3zA&list=PL3MmuxUbc_hKihpnNQ9qtTmWY
 
 ## Create a GitHub Codespace from a repo
 1. Create a new repo in GitHub
-2. Create a new Codespace from the repo
+2. Create a new Codespace from the repo [Codespaces Free Tier](https://docs.github.com/en/billing/managing-billing-for-github-codespaces/about-billing-for-github-codespaces)
 3. Connect to the Codespace from Desktop VS Code
 ![Alt text](<Assets/connect_vscode_codespace.png>)
 
@@ -106,6 +106,21 @@ docker run -it \
 ```
 
 # 4. Terraform
+## Why Terraform?
+1. Simplicity in keeping track of infrastructure
+2. Easier collaboration (e.g. git)
+3. Reproducibility (e.g. Ensure Dev, Test, Prod are the same)
+4. Ensure resources are removed when not needed (avoiding unnecessary costs in the cloud)
+
+## What Terraform is not for?
+1. Does not manage/ update code on infrastructure
+2. Does not give you the ability to change immutable resources
+3. Not used to manage resources not defined in your terraform files
+
+## What is Terraform?
+1. Infrastructure as Code (IaC) - Create resources with code files
+
+
 ## Install Terraform
 1. Copy the following commands from [here](https://developer.hashicorp.com/terraform/install?product_intent=terraform#Linux)
 2. Paste the commands in the terminal of your Codespace and run them.
