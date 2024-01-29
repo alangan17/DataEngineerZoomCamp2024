@@ -168,6 +168,9 @@ cython_debug/
 # Ignore keys and passwords
 keys/
 
+# .json
+*.json
+
 # Terraform
 # Local .terraform directories
 **/.terraform/*
