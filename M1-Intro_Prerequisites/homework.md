@@ -46,7 +46,7 @@ Now check the python modules that are installed ( use ```pip list``` ).
 
 What is version of the package *wheel* ?
 
-- <span style="color:green">0.42.0<span style="color:green">
+- <span style="color:green">0.42.0</span>
 - 1.0.0
 - 23.0.1
 - 58.1.0
@@ -61,7 +61,7 @@ We'll use the green taxi trips from September 2019:
 
 ```bash
 docker run -it \
-    --network=dataengineerzoomcamp2024_pg-network \
+    --network=m1-intro_prerequisites_pg-network \
     taxi_ingest:v001 \
       --user "root" \
       --password "root" \
@@ -85,8 +85,8 @@ docker run -it \
       --host "pg-database" \
       --port 5432 \
       --database "ny_taxi" \
-      --table "green_taxi_data" \
-      --data_source "https://d37ci6vzurychx.cloudfront.net/trip-data/green_tripdata_2019-09.parquet"
+      --table "taxi_zone_lookup" \
+      --data_source "https://s3.amazonaws.com/nyc-tlc/misc/taxi+_zone_lookup.csv"
 ```
 
 Download this data and put it into Postgres (with jupyter notebooks or with a pipeline)
@@ -100,8 +100,16 @@ Tip: started and finished on 2019-09-18.
 
 Remember that `lpep_pickup_datetime` and `lpep_dropoff_datetime` columns are in the format timestamp (date and hour+min+sec) and not in date.
 
+```sql
+select count(*)
+FROM public.green_taxi_data
+WHERE 1=1
+AND date(lpep_pickup_datetime ) = '2019-09-18'
+;
+```
+
 - 15767
-- 15612
+- <span style="color:green">15612</span>
 - 15859
 - 89009
 
@@ -110,9 +118,19 @@ Remember that `lpep_pickup_datetime` and `lpep_dropoff_datetime` columns are in 
 Which was the pick up day with the largest trip distance
 Use the pick up time for your calculations.
 
+```sql
+select 
+    date(lpep_pickup_datetime) as pickup_date,
+    sum(trip_distance)
+FROM public.green_taxi_data
+group by date(lpep_pickup_datetime)
+order by sum(trip_distance) desc
+;
+```
+
 - 2019-09-18
 - 2019-09-16
-- 2019-09-26
+- <span style="color:green">2019-09-26</span>
 - 2019-09-21
 
 
@@ -122,7 +140,20 @@ Consider lpep_pickup_datetime in '2019-09-18' and ignoring Borough has Unknown
 
 Which were the 3 pick up Boroughs that had a sum of total_amount superior to 50000?
  
-- "Brooklyn" "Manhattan" "Queens"
+```sql
+SELECT B."Borough", sum(A.total_amount)
+FROM public.green_taxi_data A
+LEFT JOIN public.taxi_zone_lookup B ON 1=1
+	AND A."PULocationID" = B."LocationID"
+WHERE 1=1
+	AND date(lpep_pickup_datetime) = '2019-09-18'
+	AND B."Borough" <> 'Unknown'
+GROUP BY B."Borough"
+HAVING sum(A.total_amount) > 50000
+ORDER BY sum(A.total_amount) DESC
+```
+
+- <span style="color:green">"Brooklyn" "Manhattan" "Queens"</span>
 - "Bronx" "Brooklyn" "Manhattan"
 - "Bronx" "Manhattan" "Queens" 
 - "Brooklyn" "Queens" "Staten Island"
@@ -135,9 +166,25 @@ We want the name of the zone, not the id.
 
 Note: it's not a typo, it's `tip` , not `trip`
 
+```sql
+SELECT
+	C."Zone" as DO_Zone,
+	MAX(A.tip_amount)
+FROM public.green_taxi_data A
+LEFT JOIN public.taxi_zone_lookup B ON 1=1
+	AND A."PULocationID" = B."LocationID"
+LEFT JOIN public.taxi_zone_lookup C ON 1=1
+	AND A."DOLocationID" = C."LocationID"
+WHERE 1=1
+	AND B."Zone" = 'Astoria'
+GROUP BY
+	C."Zone"
+ORDER BY MAX(A.tip_amount) DESC
+```
+
 - Central Park
 - Jamaica
-- JFK Airport
+- <span style="color:green">JFK Airport</span>
 - Long Island City/Queens Plaza
 
 

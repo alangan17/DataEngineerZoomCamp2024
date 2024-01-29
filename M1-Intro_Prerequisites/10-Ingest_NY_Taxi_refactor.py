@@ -31,32 +31,34 @@ def ingest_parquet(engine, table: str, data_source: str, batch_size: int = 10000
         t_end = time()
         print(f"Loaded {len(chunk)} rows to '{table}' in {t_end - t_start} seconds.")
 
-    # Close the engine connection
-    engine.dispose()
-
 
 def ingest_csv(engine, table: str, data_source: str, batch_size: int = 100000):
     print("Previewing the data schema:")
     df_preview = pd.read_csv(data_source, nrows=1000)
     print(pd.io.sql.get_schema(df_preview, name=table, con=engine))
 
-    # Ingest csv by chunks
-    df_iter = pd.read_csv(data_source, iterator=True, chunksize=batch_size)
-    df = next(df_iter)
-
     # Truncate table
-    df.head(0).to_sql(name=table, con=engine, if_exists="replace", index=False)
+    df_preview.head(0).to_sql(name=table, con=engine, if_exists="replace", index=False)
+
+    # Ingest csv by chunks
+    print("Start ingesting data...")
+    df_iter = pd.read_csv(
+        data_source, iterator=True, chunksize=batch_size, low_memory=False
+    )
 
     while True:
-        t_start = time()
+        try:
+            t_start = time()
 
-        df.to_sql(name=table, con=engine, if_exists="append", index=False)
+            df = next(df_iter)
+            df.to_sql(name=table, con=engine, if_exists="append", index=False)
 
-        t_end = time()
-        print(f"Loaded {len(chunk)} rows to '{table}' in {t_end - t_start} seconds.")
+            t_end = time()
+            print(f"Loaded {len(df)} rows to '{table}' in {t_end - t_start} seconds.")
 
-    # Close the engine connection
-    engine.dispose()
+        except StopIteration:
+            # Exit the loop when no more data is available
+            break
 
 
 def main(params):
@@ -86,11 +88,14 @@ def main(params):
     # If filename is `.parquet` file
     if data_source.endswith(".parquet"):
         ingest_parquet(engine, table, data_source)
-    # If filename is `.csv` file
-    elif data_source.endswith(".csv"):
+    # If filename is `.csv`/ `.csv.gz` file
+    elif any(ext in data_source for ext in [".csv", ".csv.gz"]):
         ingest_csv(engine, table, data_source)
     else:
         raise ValueError("File format not supported")
+
+    # Close the engine connection
+    engine.dispose()
 
     print(f"Data ingestion to '{table}' complete!")
 

@@ -104,7 +104,7 @@ docker build -t taxi_ingest:v001 .
 3. Test the container
 ```bash
 docker run -it \
-    --network=dataengineerzoomcamp2024_pg-network \
+    --network=m1-intro_prerequisites_pg-network \
     taxi_ingest:v001 \
       --user "root" \
       --password "root" \
