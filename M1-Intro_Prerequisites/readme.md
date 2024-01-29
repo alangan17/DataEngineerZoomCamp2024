@@ -146,7 +146,18 @@ docker run -it \
 4. Click `Manage Keys` -> `Add Key` -> `Create new key` -> `JSON` -> `Create`
 5. Carefully save the JSON file in a safe place, never commit it to git!
 
-## Install Terraform
+### Install Terraform
 1. Copy the following commands from [here](https://developer.hashicorp.com/terraform/install?product_intent=terraform#Linux)
 2. Paste the commands in the terminal of your Codespace and run them.
+```bash
+wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo apt update && sudo apt install terraform
+```
+
+### Prepare the Terraform file
+1. See [`main.tf`](main.tf)
+2. Test with `terraform init`
+
+
 

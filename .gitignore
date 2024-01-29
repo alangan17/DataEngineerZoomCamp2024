@@ -167,3 +167,6 @@ cython_debug/
 
 # Ignore keys and passwords
 keys/
+
+# Terraform
+.terraform/
