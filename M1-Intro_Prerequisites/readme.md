@@ -159,5 +159,16 @@ sudo apt update && sudo apt install terraform
 1. See [`main.tf`](main.tf)
 2. Test with `terraform init`
 
+### Create a Storage Bucket in GCP
+1. Google search for `gcp terraform storage bucket`
+2. Copy the example
+3. Paste it in the `main.tf` file
+4. Review with `terraform plan`
+![Alt text](<Assets/tf_plan1.png>)
+5. Build the resources with `terraform apply` -> Type `yes`
+![Alt text](<Assets/tf_apply1.png>)
+6. Note there is a file called `terraform.tfstate` created in the local machine
 
-
+### Destroy the resources
+1. Destroy the resources with `terraform destroy` -> Type `yes`
+![Alt text](<Assets/tf_destroy1.png>)
