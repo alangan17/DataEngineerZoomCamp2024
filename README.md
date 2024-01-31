@@ -17,19 +17,34 @@ In this module, you'll learn how to use the Mage platform to author and share _m
 
 This repo contains a Docker Compose template for getting started with a new Mage project. It requires Docker to be installed locally. If Docker is not installed, please follow the instructions [here](https://docs.docker.com/get-docker/). 
 
-You can start by cloning the repo:
+Either:
+1. If you have a repo, you can use the following command to add the Mage repo as a submodule:
+```bash
+git submodule add https://github.com/mage-ai/mage-zoomcamp M2-Workflow_Orchestration
+``````
+
+2. You can start by cloning the repo:
 
 ```bash
 git clone https://github.com/mage-ai/mage-zoomcamp.git mage-zoomcamp
 ```
 
 Navigate to the repo:
+1.
+```bash
+cd M2-Workflow_Orchestration
+```
 
+
+2. 
 ```bash
 cd mage-data-engineering-zoomcamp
 ```
 
 Rename `dev.env` to simply `.env`— this will _ensure_ the file is not committed to Git by accident, since it _will_ contain credentials in the future.
+```bash
+cp dev.env .env
+```
 
 Now, let's build the container
 
