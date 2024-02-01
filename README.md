@@ -2,6 +2,14 @@
 <img src="https://github.com/mage-ai/assets/blob/main/mascots/mascots-shorter.jpeg?raw=true">
 </div>
 
+# Table of Contents
+- [Table of Contents](#table-of-contents)
+  - [Data Engineering Zoomcamp - Week 2](#data-engineering-zoomcamp---week-2)
+  - [Let's get started](#lets-get-started)
+    - [What just happened?](#what-just-happened)
+  - [Build a simple pipeline](#build-a-simple-pipeline)
+  - [Assistance](#assistance)
+
 ## Data Engineering Zoomcamp - Week 2
 
 Welcome to DE Zoomcamp with Mage! 
@@ -30,20 +38,18 @@ git clone https://github.com/mage-ai/mage-zoomcamp.git mage-zoomcamp
 ```
 
 Navigate to the repo:
-1.
 ```bash
 cd M2-Workflow_Orchestration
-```
-
-
-2. 
-```bash
-cd mage-data-engineering-zoomcamp
 ```
 
 Rename `dev.env` to simply `.env`— this will _ensure_ the file is not committed to Git by accident, since it _will_ contain credentials in the future.
 ```bash
 cp dev.env .env
+```
+
+Update to the latest mage version:
+```bash
+docker compose pull
 ```
 
 Now, let's build the container
@@ -55,7 +61,7 @@ docker compose build
 Finally, start the Docker container:
 
 ```bash
-docker compose up
+docker compose up -d
 ```
 
 Now, navigate to http://localhost:6789 in your browser! Voila! You're ready to get started with the course. 
@@ -93,6 +99,9 @@ This repository should have the following structure:
 ├── docker-compose.yml
 └── requirements.txt
 ```
+
+## Build a simple pipeline
+
 
 ## Assistance
 
