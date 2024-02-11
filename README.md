@@ -1,5 +1,6 @@
 # Data Engineer Zoomcamp 2024 Week 1
 Learning Progress from https://github.com/DataTalksClub/data-engineering-zoomcamp
+Course Website: https://dezoomcamp.streamlit.app/Module%201%20Introduction%20&%20Prerequisites
 
 ## Lesson Learned
 ### 🐳Containerization with Docker
